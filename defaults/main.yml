@@ -27,7 +27,7 @@ jenkins_casc_jenkins_base_url: "http://{{ jenkins_casc_jenkins_hostname }}:{{ je
 jenkins_casc_jenkins_home: "/var/lib/jenkins"
 
 # Path to the jenkins casc directory containing the yaml files for configuration
-jenkins_casc_config_path: "{{ jenkins_casc_jenkins_home }}/jcasc"
+jenkins_casc_config_path: "{{ jenkins_casc_jenkins_home }}/casc"
 
 # Enables / Disabling the configuration of the configuration path
 jenkins_casc_config_path_configure: false
@@ -35,22 +35,42 @@ jenkins_casc_config_path_configure: false
 # Config files/templates to upload
 jenkins_casc_config_fileglobs: []
 
-# Controls if files that existing files in the 'jenkins_casc_config_path' are deleted when they are not included in the 'jenkins_casc_config_fileglobs'
-# Deletion will only be executed when at least one file was uploaded to the 'jenkins_casc_config_path'
+# Controls if files that existing files in the 'jenkins_casc_config_path' are deleted
+# when they are not included in the 'jenkins_casc_config_fileglobs'. Deletion will only
+# be executed when at least one file was uploaded to the 'jenkins_casc_config_path'
 jenkins_casc_config_unmanaged_delete: false
 
 # The timeout for jenkins_script tasks in seconds
 jenkins_casc_script_timeout: 60
 
+# Controls the no_log behavior of some tasks
+jenkins_casc_no_log: true
+
 # Plugins needed for configuration-as-code
 jenkins_casc_plugins_present:
   - name: configuration-as-code
-    version: "1.45"
+    version: "1512.vb_79d418d5fc8"
   - name: configuration-as-code-groovy
     version: "1.1"
   - name: snakeyaml-api
-    version: "1.27.0"
+    version: "1.30.2-76.vc104f7ce9870"
+  - name: job-dsl
+    version: "1.81"
 
 # Plugins no longer needed for configuration-as-code
 jenkins_casc_plugins_absent:
   - name: configuration-as-code-support
+
+# Folder where the credentials will be stored on the master
+# Path will be configured in environment variable SECRETS
+jenkins_casc_secrets_dir: /var/jenkins_secrets
+
+# Controls if the role will delete existing but not defined credentials from jenkins_casc_secrets_dir
+# Deletion will only be executed when at least one secret was uploaded to the 'jenkins_casc_secrets_dir'
+jenkins_casc_secrets_unmanaged_delete: true
+
+# List of id/value credential pairs
+jenkins_casc_secrets: []
+# Example:
+# - id: credential-id
+#   value: credential-value
