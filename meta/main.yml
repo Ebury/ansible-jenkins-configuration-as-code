@@ -33,6 +33,7 @@ dependencies:
   # install plugins
   - role: wcm-io-devops.jenkins_plugins
     src: https://github.com/Ebury/ansible-jenkins-plugins.git
+    scm: git
     version: 1.5.1-path-fix
     jenkins_plugins_admin_username: "{{ jenkins_casc_admin_username }}"
     jenkins_plugins_admin_password: "{{ jenkins_casc_admin_password }}"
