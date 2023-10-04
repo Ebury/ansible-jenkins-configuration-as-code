@@ -1,7 +1,7 @@
 ---
 galaxy_info:
   role_name: jenkins_configuration_as_code
-  namespace: wcm_io_devops
+  namespace: wcm-io-devops
   author: Tobias Richter
   description: Configures Jenkins configuration as code plugin (jcasc).
   company: pro!vision
@@ -31,8 +31,9 @@ galaxy_info:
 
 dependencies:
   # install plugins
-  - role: wcm_io_devops.jenkins_plugins
-    version: 1.6.0
+  - role: wcm-io-devops.jenkins_plugins
+    src: https://github.com/Ebury/ansible-jenkins-plugins.git
+    version: 1.5.1-path-fix
     jenkins_plugins_admin_username: "{{ jenkins_casc_admin_username }}"
     jenkins_plugins_admin_password: "{{ jenkins_casc_admin_password }}"
     jenkins_plugins_jenkins_hostname: "{{ jenkins_casc_jenkins_hostname }}"
@@ -43,4 +44,4 @@ dependencies:
     tags:
       - "dependency"
       - "jenkins_configuration_as_code_plugins"
-      - "wcm_io_devops.jenkins_plugins"
+      - "wcm-io-devops.jenkins_plugins"

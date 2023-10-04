@@ -23,6 +23,6 @@
     - (_jenkins_casc_upload_files_result | default({})).changed | default(false) or
       (_jenkins_casc_unmanaged_result | default({})).changed | default(false)
   notify:
-    - wcm_io_devops.jenkins_configuration_as_code reload
+    - wcm-io-devops.jenkins_configuration_as_code reload
   tags:
     - skip_ansible_lint
